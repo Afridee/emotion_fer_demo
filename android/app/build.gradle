@@ -58,3 +58,11 @@ android {
 flutter {
     source '../..'
 }
+
+dependencies {
+    // Must match tflite_flutter plugin (uses org.tensorflow:tensorflow-lite 2.11.0).
+    // tensorflow-lite-gpu-api supplies GpuDelegateFactory.* referenced by GpuDelegate bytecode; R8 fails without it.
+    def tflite_version = '2.11.0'
+    implementation "org.tensorflow:tensorflow-lite-gpu:${tflite_version}"
+    implementation "org.tensorflow:tensorflow-lite-gpu-api:${tflite_version}"
+}
